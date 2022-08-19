@@ -14,14 +14,24 @@ Secuencia:  0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...
 Como ejercicio adicional y completamente opcional, al terminar de resolver este problema pueden intentar definir funciones que logren los mismos resultados pero de manera iterativa.
 */
 
-function nFactorial(n) {
+function nFactorial(n) {//
+if (n<2) return 1 
+if (n===2) return 2
+return n * nFactorial(n-1) //120
+//     5* fac (4) -->24*5 
+////     4* fac(3) --> 4*6
+////        3* fac(2) --> 3*2
 }
 
-function nFibonacci(n) {
+function nFibonacci(n) { // 5 array[n] este n es el indice
+if (n === 0 ) return 0 //0
+if ( n < 3 ) return 1 //2,1=1
+return nFibonacci(n - 1 ) + nFibonacci(n-2)
 }
 
 /*
-Implementar la clase Queue, sabiendo que es una estructura de tipo FIFO, donde el primer elemento que ingresa es el primero que se quita. Definir los siguientes métodos:
+Implementar la clase Queue, sabiendo que es una estructura de tipo FIFO, 
+donde el primer elemento que ingresa es el primero que se quita. Definir los siguientes métodos:
   - enqueue: agrega un valor respetando el orden.
   - dequeue: remueve un valor respetando el orden. Retorna undefined cuando la queue está vacía.
   - size: retorna el tamaño (cantidad de elementos) de la queue.
@@ -30,8 +40,32 @@ Pueden utilizar class o función constructora.
 */
 
 function Queue() {
-
+  this.arr = [];
+  this.enqueue = function(data){ // enqueue no regresa nada por eso no hay return
+    this.arr.push(data);
+  } // asi podemos definir los metodos
 }
+Queue.prototype.dequeue = function(){
+  return this.arr.shift()
+} // asi tb podemos definir los metodos
+Queue.prototype.size = function(){
+  return this.arr.length
+}
+/* 
+ class Queue{
+  constructor(){
+    this.arr=[]
+     }
+size(){
+  return this.arr.length
+}
+Queue.prototype.enqueue = function(data){ 
+    this.arr.push(data);
+}
+
+Queue.prototype.dequeue = function(){
+  return this.arr.shift()
+} */
 
 // No modifiquen nada debajo de esta linea
 // --------------------------------
@@ -41,3 +75,4 @@ module.exports = {
   nFactorial,
   nFibonacci
 };
+ 
